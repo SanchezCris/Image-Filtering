@@ -10,11 +10,29 @@ using System.Windows.Forms;
 
 namespace Filtros_Digitales
 {
-    public partial class Form1 : Form
+    public partial class FormInicio : Form
     {
-        public Form1()
+        public FormInicio()
         {
             InitializeComponent();
+            Bitmap fondo = new Bitmap(Application.StartupPath + @"\fondoInicio\Venecia.jpg");
+            this.BackgroundImage = fondo;
+            this.BackgroundImageLayout = ImageLayout.Stretch;
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FormPrincipal formPrincipal = new FormPrincipal();
+            formPrincipal.Show();
+
+        }
+
+        private void FormInicio_Load(object sender, EventArgs e){}
     }
 }
