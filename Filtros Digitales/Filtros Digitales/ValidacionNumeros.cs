@@ -11,19 +11,23 @@ namespace Filtros_Digitales
     {
         public static void NumerosDecimales(KeyPressEventArgs valor)
         {
-            if(Char.IsDigit(valor.KeyChar))
+            if(Char.IsDigit(valor.KeyChar)) //Permite que agregue numeros
             {
                 valor.Handled = false;
             }
-            else if (Char.IsSeparator(valor.KeyChar))
+            else if (Char.IsSeparator(valor.KeyChar)) //No permite que agregue espacios entre caracteres
             {
                 valor.Handled = true;
             }
-            else if(Char.IsControl(valor.KeyChar))
+            else if(Char.IsControl(valor.KeyChar)) //Permite teclas de control
             {
                 valor.Handled = false;
             }
-            else if(valor.KeyChar.ToString().Equals("."))
+            else if(valor.KeyChar.ToString().Equals(".")) //Permite que agregue punto decimal
+            {
+                valor.Handled = false;
+            }
+            else if (valor.KeyChar.ToString().Equals("-")) //Permite que agregue signo menos
             {
                 valor.Handled = false;
             }
