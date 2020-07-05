@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipal));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importarImagenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarImagenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.guardarImagenEnEscalaDeGrisesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.filtroOriginalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,36 +54,50 @@
             this.tipoShrapenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.norteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.esteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBoxImgOriginal = new System.Windows.Forms.PictureBox();
+            this.esteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.oesteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.negativoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.filtroDeTipoGaussToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.filtrosAColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.negativoColorToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.labelTitle1 = new System.Windows.Forms.Label();
             this.labelTitle2 = new System.Windows.Forms.Label();
-            this.pictureBoxImgEditada = new System.Windows.Forms.PictureBox();
             this.openFileDialogImportarImagen = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialogImage = new System.Windows.Forms.SaveFileDialog();
             this.labelTitle3 = new System.Windows.Forms.Label();
-            this.pictureBoxImgGrises = new System.Windows.Forms.PictureBox();
-            this.textBoxA = new System.Windows.Forms.TextBox();
-            this.textBoxB = new System.Windows.Forms.TextBox();
-            this.textBoxC = new System.Windows.Forms.TextBox();
-            this.textBoxD = new System.Windows.Forms.TextBox();
-            this.textBoxE = new System.Windows.Forms.TextBox();
-            this.textBoxF = new System.Windows.Forms.TextBox();
-            this.textBoxG = new System.Windows.Forms.TextBox();
-            this.textBoxH = new System.Windows.Forms.TextBox();
-            this.textBoxI = new System.Windows.Forms.TextBox();
             this.buttonAceptar = new System.Windows.Forms.Button();
-            this.esteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.oesteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.filtrosAColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.negativoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBoxImgGrises = new System.Windows.Forms.PictureBox();
+            this.pictureBoxImgEditada = new System.Windows.Forms.PictureBox();
+            this.pictureBoxImgOriginal = new System.Windows.Forms.PictureBox();
+            this.numericUpDownA = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownB = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownC = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownD = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownE = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownF = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownG = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownH = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownI = new System.Windows.Forms.NumericUpDown();
+            this.labelTitle4 = new System.Windows.Forms.Label();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImgOriginal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImgEditada)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImgGrises)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImgEditada)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImgOriginal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownA)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownE)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownH)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownI)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.SteelBlue;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoToolStripMenuItem,
             this.editarToolStripMenuItem,
@@ -89,7 +105,7 @@
             this.filtrosAColorToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(949, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1134, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -106,21 +122,30 @@
             // importarImagenToolStripMenuItem
             // 
             this.importarImagenToolStripMenuItem.Name = "importarImagenToolStripMenuItem";
-            this.importarImagenToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.importarImagenToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.importarImagenToolStripMenuItem.Text = "Importar Imagen";
             this.importarImagenToolStripMenuItem.Click += new System.EventHandler(this.importarImagenToolStripMenuItem_Click);
             // 
             // guardarImagenToolStripMenuItem
             // 
+            this.guardarImagenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.guardarImagenEnEscalaDeGrisesToolStripMenuItem});
             this.guardarImagenToolStripMenuItem.Name = "guardarImagenToolStripMenuItem";
-            this.guardarImagenToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.guardarImagenToolStripMenuItem.Text = "Guardar Imagen";
+            this.guardarImagenToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.guardarImagenToolStripMenuItem.Text = "Guardar Imagen Filtrada";
             this.guardarImagenToolStripMenuItem.Click += new System.EventHandler(this.guardarImagenToolStripMenuItem_Click);
+            // 
+            // guardarImagenEnEscalaDeGrisesToolStripMenuItem
+            // 
+            this.guardarImagenEnEscalaDeGrisesToolStripMenuItem.Name = "guardarImagenEnEscalaDeGrisesToolStripMenuItem";
+            this.guardarImagenEnEscalaDeGrisesToolStripMenuItem.Size = new System.Drawing.Size(260, 22);
+            this.guardarImagenEnEscalaDeGrisesToolStripMenuItem.Text = "Guardar Imagen en Escala de Grises";
+            this.guardarImagenEnEscalaDeGrisesToolStripMenuItem.Click += new System.EventHandler(this.guardarImagenEnEscalaDeGrisesToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -230,7 +255,8 @@
             this.esteToolStripMenuItem,
             this.esteToolStripMenuItem1,
             this.oesteToolStripMenuItem,
-            this.negativoToolStripMenuItem});
+            this.negativoToolStripMenuItem,
+            this.filtroDeTipoGaussToolStripMenuItem});
             this.filtrosVariadosToolStripMenuItem.Name = "filtrosVariadosToolStripMenuItem";
             this.filtrosVariadosToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
             this.filtrosVariadosToolStripMenuItem.Text = "Filtros Variados";
@@ -277,154 +303,6 @@
             this.esteToolStripMenuItem.Text = "Sur";
             this.esteToolStripMenuItem.Click += new System.EventHandler(this.esteToolStripMenuItem_Click);
             // 
-            // pictureBoxImgOriginal
-            // 
-            this.pictureBoxImgOriginal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxImgOriginal.Location = new System.Drawing.Point(12, 269);
-            this.pictureBoxImgOriginal.Name = "pictureBoxImgOriginal";
-            this.pictureBoxImgOriginal.Size = new System.Drawing.Size(250, 200);
-            this.pictureBoxImgOriginal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxImgOriginal.TabIndex = 1;
-            this.pictureBoxImgOriginal.TabStop = false;
-            // 
-            // labelTitle1
-            // 
-            this.labelTitle1.AutoSize = true;
-            this.labelTitle1.Location = new System.Drawing.Point(12, 479);
-            this.labelTitle1.Name = "labelTitle1";
-            this.labelTitle1.Size = new System.Drawing.Size(80, 13);
-            this.labelTitle1.TabIndex = 2;
-            this.labelTitle1.Text = "Imagen Original";
-            // 
-            // labelTitle2
-            // 
-            this.labelTitle2.AutoSize = true;
-            this.labelTitle2.Location = new System.Drawing.Point(736, 476);
-            this.labelTitle2.Name = "labelTitle2";
-            this.labelTitle2.Size = new System.Drawing.Size(81, 13);
-            this.labelTitle2.TabIndex = 3;
-            this.labelTitle2.Text = "Imagen Editada";
-            // 
-            // pictureBoxImgEditada
-            // 
-            this.pictureBoxImgEditada.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxImgEditada.Location = new System.Drawing.Point(655, 269);
-            this.pictureBoxImgEditada.Name = "pictureBoxImgEditada";
-            this.pictureBoxImgEditada.Size = new System.Drawing.Size(250, 200);
-            this.pictureBoxImgEditada.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxImgEditada.TabIndex = 4;
-            this.pictureBoxImgEditada.TabStop = false;
-            // 
-            // openFileDialogImportarImagen
-            // 
-            this.openFileDialogImportarImagen.FileName = "openFileDialogImportarImagen";
-            this.openFileDialogImportarImagen.Filter = "Archivos de mapa de bits|*.BMP|JPEG|*.JPG|PNG|*.PNG";
-            // 
-            // saveFileDialogImage
-            // 
-            this.saveFileDialogImage.Filter = "Archivos de mapa de bits|*.BMP|JPEG|*.JPG|PNG|*.PNG";
-            // 
-            // labelTitle3
-            // 
-            this.labelTitle3.AutoSize = true;
-            this.labelTitle3.Location = new System.Drawing.Point(344, 479);
-            this.labelTitle3.Name = "labelTitle3";
-            this.labelTitle3.Size = new System.Drawing.Size(124, 13);
-            this.labelTitle3.TabIndex = 5;
-            this.labelTitle3.Text = "Imagen Escala de Grises";
-            // 
-            // pictureBoxImgGrises
-            // 
-            this.pictureBoxImgGrises.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxImgGrises.Location = new System.Drawing.Point(333, 269);
-            this.pictureBoxImgGrises.Name = "pictureBoxImgGrises";
-            this.pictureBoxImgGrises.Size = new System.Drawing.Size(250, 200);
-            this.pictureBoxImgGrises.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxImgGrises.TabIndex = 6;
-            this.pictureBoxImgGrises.TabStop = false;
-            // 
-            // textBoxA
-            // 
-            this.textBoxA.Location = new System.Drawing.Point(672, 114);
-            this.textBoxA.Name = "textBoxA";
-            this.textBoxA.Size = new System.Drawing.Size(70, 20);
-            this.textBoxA.TabIndex = 7;
-            this.textBoxA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxA_KeyPress);
-            // 
-            // textBoxB
-            // 
-            this.textBoxB.Location = new System.Drawing.Point(747, 114);
-            this.textBoxB.Name = "textBoxB";
-            this.textBoxB.Size = new System.Drawing.Size(70, 20);
-            this.textBoxB.TabIndex = 8;
-            this.textBoxB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxB_KeyPress);
-            // 
-            // textBoxC
-            // 
-            this.textBoxC.Location = new System.Drawing.Point(823, 114);
-            this.textBoxC.Name = "textBoxC";
-            this.textBoxC.Size = new System.Drawing.Size(70, 20);
-            this.textBoxC.TabIndex = 9;
-            this.textBoxC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxC_KeyPress);
-            // 
-            // textBoxD
-            // 
-            this.textBoxD.Location = new System.Drawing.Point(672, 140);
-            this.textBoxD.Name = "textBoxD";
-            this.textBoxD.Size = new System.Drawing.Size(70, 20);
-            this.textBoxD.TabIndex = 10;
-            this.textBoxD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxD_KeyPress);
-            // 
-            // textBoxE
-            // 
-            this.textBoxE.Location = new System.Drawing.Point(747, 140);
-            this.textBoxE.Name = "textBoxE";
-            this.textBoxE.Size = new System.Drawing.Size(70, 20);
-            this.textBoxE.TabIndex = 11;
-            this.textBoxE.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxE_KeyPress);
-            // 
-            // textBoxF
-            // 
-            this.textBoxF.Location = new System.Drawing.Point(823, 140);
-            this.textBoxF.Name = "textBoxF";
-            this.textBoxF.Size = new System.Drawing.Size(70, 20);
-            this.textBoxF.TabIndex = 12;
-            this.textBoxF.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxF_KeyPress);
-            // 
-            // textBoxG
-            // 
-            this.textBoxG.Location = new System.Drawing.Point(672, 166);
-            this.textBoxG.Name = "textBoxG";
-            this.textBoxG.Size = new System.Drawing.Size(70, 20);
-            this.textBoxG.TabIndex = 13;
-            this.textBoxG.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxG_KeyPress);
-            // 
-            // textBoxH
-            // 
-            this.textBoxH.Location = new System.Drawing.Point(747, 166);
-            this.textBoxH.Name = "textBoxH";
-            this.textBoxH.Size = new System.Drawing.Size(70, 20);
-            this.textBoxH.TabIndex = 14;
-            this.textBoxH.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxH_KeyPress);
-            // 
-            // textBoxI
-            // 
-            this.textBoxI.Location = new System.Drawing.Point(823, 166);
-            this.textBoxI.Name = "textBoxI";
-            this.textBoxI.Size = new System.Drawing.Size(70, 20);
-            this.textBoxI.TabIndex = 15;
-            this.textBoxI.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxI_KeyPress);
-            // 
-            // buttonAceptar
-            // 
-            this.buttonAceptar.Location = new System.Drawing.Point(747, 204);
-            this.buttonAceptar.Name = "buttonAceptar";
-            this.buttonAceptar.Size = new System.Drawing.Size(75, 23);
-            this.buttonAceptar.TabIndex = 16;
-            this.buttonAceptar.Text = "Aceptar";
-            this.buttonAceptar.UseVisualStyleBackColor = true;
-            this.buttonAceptar.Click += new System.EventHandler(this.buttonAceptar_Click);
-            // 
             // esteToolStripMenuItem1
             // 
             this.esteToolStripMenuItem1.Name = "esteToolStripMenuItem1";
@@ -439,12 +317,6 @@
             this.oesteToolStripMenuItem.Text = "Oeste";
             this.oesteToolStripMenuItem.Click += new System.EventHandler(this.oesteToolStripMenuItem_Click);
             // 
-            // filtrosAColorToolStripMenuItem
-            // 
-            this.filtrosAColorToolStripMenuItem.Name = "filtrosAColorToolStripMenuItem";
-            this.filtrosAColorToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
-            this.filtrosAColorToolStripMenuItem.Text = "Filtros A Color";
-            // 
             // negativoToolStripMenuItem
             // 
             this.negativoToolStripMenuItem.Name = "negativoToolStripMenuItem";
@@ -452,21 +324,314 @@
             this.negativoToolStripMenuItem.Text = "Negativo";
             this.negativoToolStripMenuItem.Click += new System.EventHandler(this.negativoToolStripMenuItem_Click);
             // 
+            // filtroDeTipoGaussToolStripMenuItem
+            // 
+            this.filtroDeTipoGaussToolStripMenuItem.Name = "filtroDeTipoGaussToolStripMenuItem";
+            this.filtroDeTipoGaussToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.filtroDeTipoGaussToolStripMenuItem.Text = "Filtro de tipo Gauss";
+            this.filtroDeTipoGaussToolStripMenuItem.Click += new System.EventHandler(this.filtroDeTipoGaussToolStripMenuItem_Click);
+            // 
+            // filtrosAColorToolStripMenuItem
+            // 
+            this.filtrosAColorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.negativoColorToolStripMenuItem1,
+            this.toolStripMenuItem1});
+            this.filtrosAColorToolStripMenuItem.Name = "filtrosAColorToolStripMenuItem";
+            this.filtrosAColorToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
+            this.filtrosAColorToolStripMenuItem.Text = "Filtros A Color";
+            // 
+            // negativoColorToolStripMenuItem1
+            // 
+            this.negativoColorToolStripMenuItem1.Name = "negativoColorToolStripMenuItem1";
+            this.negativoColorToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.negativoColorToolStripMenuItem1.Text = "Negativo";
+            this.negativoColorToolStripMenuItem1.Click += new System.EventHandler(this.negativoColorToolStripMenuItem1_Click);
+            // 
+            // labelTitle1
+            // 
+            this.labelTitle1.AutoSize = true;
+            this.labelTitle1.BackColor = System.Drawing.Color.Transparent;
+            this.labelTitle1.Font = new System.Drawing.Font("Sans Serif Shaded", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitle1.ForeColor = System.Drawing.Color.White;
+            this.labelTitle1.Location = new System.Drawing.Point(32, 597);
+            this.labelTitle1.Name = "labelTitle1";
+            this.labelTitle1.Size = new System.Drawing.Size(314, 29);
+            this.labelTitle1.TabIndex = 2;
+            this.labelTitle1.Text = "Imagen Original";
+            // 
+            // labelTitle2
+            // 
+            this.labelTitle2.AutoSize = true;
+            this.labelTitle2.BackColor = System.Drawing.Color.Transparent;
+            this.labelTitle2.Font = new System.Drawing.Font("Sans Serif Shaded", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitle2.ForeColor = System.Drawing.Color.White;
+            this.labelTitle2.Location = new System.Drawing.Point(476, 597);
+            this.labelTitle2.Name = "labelTitle2";
+            this.labelTitle2.Size = new System.Drawing.Size(296, 29);
+            this.labelTitle2.TabIndex = 3;
+            this.labelTitle2.Text = "Imagen Editada";
+            // 
+            // openFileDialogImportarImagen
+            // 
+            this.openFileDialogImportarImagen.FileName = "openFileDialogImportarImagen";
+            this.openFileDialogImportarImagen.Filter = "Archivos de mapa de bits|*.BMP|JPEG|*.JPG|PNG|*.PNG";
+            // 
+            // saveFileDialogImage
+            // 
+            this.saveFileDialogImage.Filter = "PNG|*.PNG";
+            // 
+            // labelTitle3
+            // 
+            this.labelTitle3.AutoSize = true;
+            this.labelTitle3.BackColor = System.Drawing.Color.Transparent;
+            this.labelTitle3.Font = new System.Drawing.Font("Sans Serif Shaded", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitle3.ForeColor = System.Drawing.Color.White;
+            this.labelTitle3.Location = new System.Drawing.Point(845, 580);
+            this.labelTitle3.Name = "labelTitle3";
+            this.labelTitle3.Size = new System.Drawing.Size(275, 58);
+            this.labelTitle3.TabIndex = 5;
+            this.labelTitle3.Text = "Imagen Escala\r\n   de Grises";
+            // 
+            // buttonAceptar
+            // 
+            this.buttonAceptar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonAceptar.Location = new System.Drawing.Point(940, 178);
+            this.buttonAceptar.Name = "buttonAceptar";
+            this.buttonAceptar.Size = new System.Drawing.Size(75, 23);
+            this.buttonAceptar.TabIndex = 16;
+            this.buttonAceptar.Text = "Aceptar";
+            this.buttonAceptar.UseVisualStyleBackColor = true;
+            this.buttonAceptar.Click += new System.EventHandler(this.buttonAceptar_Click);
+            // 
+            // pictureBoxImgGrises
+            // 
+            this.pictureBoxImgGrises.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxImgGrises.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxImgGrises.Image")));
+            this.pictureBoxImgGrises.Location = new System.Drawing.Point(854, 217);
+            this.pictureBoxImgGrises.Name = "pictureBoxImgGrises";
+            this.pictureBoxImgGrises.Size = new System.Drawing.Size(250, 354);
+            this.pictureBoxImgGrises.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxImgGrises.TabIndex = 6;
+            this.pictureBoxImgGrises.TabStop = false;
+            // 
+            // pictureBoxImgEditada
+            // 
+            this.pictureBoxImgEditada.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxImgEditada.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxImgEditada.Image")));
+            this.pictureBoxImgEditada.Location = new System.Drawing.Point(433, 88);
+            this.pictureBoxImgEditada.Name = "pictureBoxImgEditada";
+            this.pictureBoxImgEditada.Size = new System.Drawing.Size(377, 483);
+            this.pictureBoxImgEditada.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxImgEditada.TabIndex = 4;
+            this.pictureBoxImgEditada.TabStop = false;
+            // 
+            // pictureBoxImgOriginal
+            // 
+            this.pictureBoxImgOriginal.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxImgOriginal.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxImgOriginal.Image")));
+            this.pictureBoxImgOriginal.Location = new System.Drawing.Point(12, 88);
+            this.pictureBoxImgOriginal.Name = "pictureBoxImgOriginal";
+            this.pictureBoxImgOriginal.Size = new System.Drawing.Size(376, 483);
+            this.pictureBoxImgOriginal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxImgOriginal.TabIndex = 1;
+            this.pictureBoxImgOriginal.TabStop = false;
+            // 
+            // numericUpDownA
+            // 
+            this.numericUpDownA.DecimalPlaces = 2;
+            this.numericUpDownA.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDownA.Location = new System.Drawing.Point(867, 87);
+            this.numericUpDownA.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDownA.Name = "numericUpDownA";
+            this.numericUpDownA.Size = new System.Drawing.Size(70, 20);
+            this.numericUpDownA.TabIndex = 17;
+            // 
+            // numericUpDownB
+            // 
+            this.numericUpDownB.DecimalPlaces = 2;
+            this.numericUpDownB.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDownB.Location = new System.Drawing.Point(942, 87);
+            this.numericUpDownB.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDownB.Name = "numericUpDownB";
+            this.numericUpDownB.Size = new System.Drawing.Size(70, 20);
+            this.numericUpDownB.TabIndex = 18;
+            // 
+            // numericUpDownC
+            // 
+            this.numericUpDownC.DecimalPlaces = 2;
+            this.numericUpDownC.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDownC.Location = new System.Drawing.Point(1018, 88);
+            this.numericUpDownC.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDownC.Name = "numericUpDownC";
+            this.numericUpDownC.Size = new System.Drawing.Size(70, 20);
+            this.numericUpDownC.TabIndex = 19;
+            // 
+            // numericUpDownD
+            // 
+            this.numericUpDownD.DecimalPlaces = 2;
+            this.numericUpDownD.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDownD.Location = new System.Drawing.Point(867, 114);
+            this.numericUpDownD.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDownD.Name = "numericUpDownD";
+            this.numericUpDownD.Size = new System.Drawing.Size(70, 20);
+            this.numericUpDownD.TabIndex = 20;
+            // 
+            // numericUpDownE
+            // 
+            this.numericUpDownE.DecimalPlaces = 2;
+            this.numericUpDownE.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDownE.Location = new System.Drawing.Point(942, 114);
+            this.numericUpDownE.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDownE.Name = "numericUpDownE";
+            this.numericUpDownE.Size = new System.Drawing.Size(70, 20);
+            this.numericUpDownE.TabIndex = 21;
+            // 
+            // numericUpDownF
+            // 
+            this.numericUpDownF.DecimalPlaces = 2;
+            this.numericUpDownF.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDownF.Location = new System.Drawing.Point(1018, 114);
+            this.numericUpDownF.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDownF.Name = "numericUpDownF";
+            this.numericUpDownF.Size = new System.Drawing.Size(70, 20);
+            this.numericUpDownF.TabIndex = 22;
+            // 
+            // numericUpDownG
+            // 
+            this.numericUpDownG.DecimalPlaces = 2;
+            this.numericUpDownG.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDownG.Location = new System.Drawing.Point(867, 140);
+            this.numericUpDownG.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDownG.Name = "numericUpDownG";
+            this.numericUpDownG.Size = new System.Drawing.Size(70, 20);
+            this.numericUpDownG.TabIndex = 23;
+            // 
+            // numericUpDownH
+            // 
+            this.numericUpDownH.DecimalPlaces = 2;
+            this.numericUpDownH.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDownH.Location = new System.Drawing.Point(940, 140);
+            this.numericUpDownH.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDownH.Name = "numericUpDownH";
+            this.numericUpDownH.Size = new System.Drawing.Size(70, 20);
+            this.numericUpDownH.TabIndex = 24;
+            // 
+            // numericUpDownI
+            // 
+            this.numericUpDownI.DecimalPlaces = 2;
+            this.numericUpDownI.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDownI.Location = new System.Drawing.Point(1018, 140);
+            this.numericUpDownI.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDownI.Name = "numericUpDownI";
+            this.numericUpDownI.Size = new System.Drawing.Size(70, 20);
+            this.numericUpDownI.TabIndex = 25;
+            // 
+            // labelTitle4
+            // 
+            this.labelTitle4.AutoSize = true;
+            this.labelTitle4.BackColor = System.Drawing.Color.Transparent;
+            this.labelTitle4.Font = new System.Drawing.Font("Sans Serif Shaded", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitle4.ForeColor = System.Drawing.Color.White;
+            this.labelTitle4.Location = new System.Drawing.Point(901, 55);
+            this.labelTitle4.Name = "labelTitle4";
+            this.labelTitle4.Size = new System.Drawing.Size(167, 29);
+            this.labelTitle4.TabIndex = 26;
+            this.labelTitle4.Text = "Matriz: ";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(949, 501);
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.ClientSize = new System.Drawing.Size(1134, 641);
+            this.Controls.Add(this.labelTitle4);
+            this.Controls.Add(this.numericUpDownI);
+            this.Controls.Add(this.numericUpDownH);
+            this.Controls.Add(this.numericUpDownG);
+            this.Controls.Add(this.numericUpDownF);
+            this.Controls.Add(this.numericUpDownE);
+            this.Controls.Add(this.numericUpDownD);
+            this.Controls.Add(this.numericUpDownC);
+            this.Controls.Add(this.numericUpDownB);
+            this.Controls.Add(this.numericUpDownA);
             this.Controls.Add(this.buttonAceptar);
-            this.Controls.Add(this.textBoxI);
-            this.Controls.Add(this.textBoxH);
-            this.Controls.Add(this.textBoxG);
-            this.Controls.Add(this.textBoxF);
-            this.Controls.Add(this.textBoxE);
-            this.Controls.Add(this.textBoxD);
-            this.Controls.Add(this.textBoxC);
-            this.Controls.Add(this.textBoxB);
-            this.Controls.Add(this.textBoxA);
             this.Controls.Add(this.pictureBoxImgGrises);
             this.Controls.Add(this.labelTitle3);
             this.Controls.Add(this.pictureBoxImgEditada);
@@ -474,15 +639,28 @@
             this.Controls.Add(this.labelTitle1);
             this.Controls.Add(this.pictureBoxImgOriginal);
             this.Controls.Add(this.menuStrip1);
+            this.HelpButton = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "FormPrincipal";
-            this.Text = "FormPrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Filtros Digitales";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormPrincipal_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImgOriginal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImgEditada)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImgGrises)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImgEditada)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImgOriginal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownA)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownE)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownH)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownI)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -497,7 +675,6 @@
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem filtroOriginalToolStripMenuItem;
-        private System.Windows.Forms.PictureBox pictureBoxImgOriginal;
         private System.Windows.Forms.Label labelTitle1;
         private System.Windows.Forms.Label labelTitle2;
         private System.Windows.Forms.PictureBox pictureBoxImgEditada;
@@ -516,15 +693,6 @@
         private System.Windows.Forms.ToolStripMenuItem sobelIzquierdoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem afilarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem personalizadoToolStripMenuItem;
-        public System.Windows.Forms.TextBox textBoxA;
-        public System.Windows.Forms.TextBox textBoxB;
-        public System.Windows.Forms.TextBox textBoxC;
-        public System.Windows.Forms.TextBox textBoxD;
-        public System.Windows.Forms.TextBox textBoxE;
-        public System.Windows.Forms.TextBox textBoxF;
-        public System.Windows.Forms.TextBox textBoxG;
-        public System.Windows.Forms.TextBox textBoxH;
-        public System.Windows.Forms.TextBox textBoxI;
         public System.Windows.Forms.Button buttonAceptar;
         private System.Windows.Forms.ToolStripMenuItem desenfoqueToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem detecciónDeBordesToolStripMenuItem;
@@ -536,5 +704,20 @@
         private System.Windows.Forms.ToolStripMenuItem oesteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem negativoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem filtrosAColorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem guardarImagenEnEscalaDeGrisesToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pictureBoxImgOriginal;
+        private System.Windows.Forms.NumericUpDown numericUpDownA;
+        private System.Windows.Forms.NumericUpDown numericUpDownB;
+        private System.Windows.Forms.NumericUpDown numericUpDownC;
+        private System.Windows.Forms.NumericUpDown numericUpDownD;
+        private System.Windows.Forms.NumericUpDown numericUpDownE;
+        private System.Windows.Forms.NumericUpDown numericUpDownF;
+        private System.Windows.Forms.NumericUpDown numericUpDownG;
+        private System.Windows.Forms.NumericUpDown numericUpDownH;
+        private System.Windows.Forms.NumericUpDown numericUpDownI;
+        private System.Windows.Forms.Label labelTitle4;
+        private System.Windows.Forms.ToolStripMenuItem filtroDeTipoGaussToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem negativoColorToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }
