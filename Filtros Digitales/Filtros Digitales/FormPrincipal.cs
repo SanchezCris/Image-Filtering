@@ -16,6 +16,9 @@ namespace Filtros_Digitales
         private Bitmap imgOriginal; //imagen original
         private Bitmap imgEscalaGrises; //imagen escalaGrises
         private Bitmap imgResultante; //imagen editada
+        private Bitmap imgBrillo;
+        private Bitmap imgContraste;
+        int brillo = 0, contraste = 0;
 
         Color originalColor = new Color(); //objeto que guardara el color del pixel de la imagen original
         Color resultanteColor = new Color(); //objeto que guardara el color final del pixel.
@@ -38,6 +41,14 @@ namespace Filtros_Digitales
             Bitmap fondo = new Bitmap(Application.StartupPath + @"\fondoInicio\FondoSecundario.jpg");
             this.BackgroundImage = fondo;
             this.BackgroundImageLayout = ImageLayout.Stretch;
+            btnBrillo.Visible = false;
+            btnContraste.Visible = false;
+            lblBrillo.Visible = false;
+            lblContraste.Visible = false;
+            title5.Visible = false;
+            title6.Visible = false;
+            hScrollBar1.Visible = false;
+            hScrollBar2.Visible = false;
             OcultarNumericUpDown();
         }
 
@@ -65,6 +76,7 @@ namespace Filtros_Digitales
         {
             if (openFileDialogImportarImagen.ShowDialog() == DialogResult.OK)
             {
+                Bitmap fondoPictureBox = new Bitmap(Application.StartupPath + @"\fondoInicio\imgFiltro.jpg");
                 imgOriginal = (Bitmap)(Bitmap.FromFile(openFileDialogImportarImagen.FileName));
 
                 //Ajuste de dimensiones a los picture Box segun el tamaño de las fotos
@@ -75,9 +87,18 @@ namespace Filtros_Digitales
                     pictureBoxImgEditada.SizeMode = PictureBoxSizeMode.Zoom;
                 }
                 pictureBoxImgOriginal.Image = imgOriginal; //Se muestra la imagen importada en el pictureBox
+                pictureBoxImgEditada.Image = fondoPictureBox;
+                btnBrillo.Visible = true;
+                btnContraste.Visible = true;
+                title5.Visible = true;
+                title6.Visible = true;
+                lblBrillo.Visible = true;
+                lblContraste.Visible = true;
+                hScrollBar1.Visible = true;
+                hScrollBar2.Visible = true;
 
                 //Convirtiendo la imagen original a escala de grises
-                
+
                 imgEscalaGrises = new Bitmap(imgOriginal.Width, imgOriginal.Height);
                 int intensidad = 0;
 
@@ -562,39 +583,6 @@ namespace Filtros_Digitales
 
             imgResultante = new Bitmap(imgOriginal.Width, imgOriginal.Height);
             DigitalizacionDouble3x3(matrizFiltroPersonalizado);
-            /*
-            bool errorA = true, errorB = true, errorC = true;
-            bool errorD = true, errorE = true, errorF = true;
-            bool errorG = true, errorH = true, errorI = true;
-
-            errorA = ValidarSignoNegativo(textBoxA.Text);
-            errorB = ValidarSignoNegativo(textBoxB.Text);
-            errorC = ValidarSignoNegativo(textBoxC.Text);
-            errorD = ValidarSignoNegativo(textBoxD.Text);
-            errorE = ValidarSignoNegativo(textBoxE.Text);
-            errorF = ValidarSignoNegativo(textBoxF.Text);
-            errorG = ValidarSignoNegativo(textBoxG.Text);
-            errorH = ValidarSignoNegativo(textBoxH.Text);
-            errorI = ValidarSignoNegativo(textBoxI.Text);
-
-            if (errorA == false && errorB == false && errorC == false &&
-                errorD == false && errorE == false && errorF == false &&
-                errorG == false && errorH == false && errorI == false)
-            {
-                matrizFiltroPersonalizado[0, 0] = Convert.ToDouble(textBoxA.Text);
-                matrizFiltroPersonalizado[0, 1] = Convert.ToDouble(textBoxB.Text);
-                matrizFiltroPersonalizado[0, 2] = Convert.ToDouble(textBoxC.Text);
-                matrizFiltroPersonalizado[1, 0] = Convert.ToDouble(textBoxD.Text);
-                matrizFiltroPersonalizado[1, 1] = Convert.ToDouble(textBoxE.Text);
-                matrizFiltroPersonalizado[1, 2] = Convert.ToDouble(textBoxF.Text);
-                matrizFiltroPersonalizado[2, 0] = Convert.ToDouble(textBoxG.Text);
-                matrizFiltroPersonalizado[2, 1] = Convert.ToDouble(textBoxH.Text);
-                matrizFiltroPersonalizado[2, 2] = Convert.ToDouble(textBoxI.Text);
-
-                imgResultante = new Bitmap(imgOriginal.Width, imgOriginal.Height);
-                DigitalizacionDouble3x3(matrizFiltroPersonalizado);
-            }
-            */
         }
 
         //Filtros Extras:
@@ -880,17 +868,422 @@ namespace Filtros_Digitales
                 {
                     for (int j = 0; j < imgOriginal.Height; j++)
                     {
-                        //grisColor = imgEscalaGrises.GetPixel(i, j); //Obtencion del color del pixel
-                                                                    //Procesamiento del nuevo color.
                         resultanteColor = Color.FromArgb(255 - imgOriginal.GetPixel(i, j).R,
                                                          255 - imgOriginal.GetPixel(i, j).G,
                                                          255 - imgOriginal.GetPixel(i, j).B);
-                        //Colocacion del color en escala de grises
                         imgResultante.SetPixel(i, j, resultanteColor);
                     }
                 }
                 pictureBoxImgEditada.Image = imgResultante;
                 this.Invalidate(); //Forza el evento paint, redibuja la ventna
+            }
+        }
+
+        private void rojoToolStripMenuItem1_Click(object sender, EventArgs e) //Evento del Color Rojo
+        {
+            OcultarNumericUpDown();
+            if (imgOriginal == null)
+            {
+                MessageBox.Show("Porfavor, importe una imagen");
+            }
+            else
+            {
+                imgResultante = new Bitmap(imgOriginal.Width, imgOriginal.Height);
+
+                for (int i = 0; i < imgOriginal.Width; i++)
+                {
+                    for (int j = 0; j < imgOriginal.Height; j++)
+                    {
+                        resultanteColor = Color.FromArgb(imgOriginal.GetPixel(i, j).R, 0, 0);
+                        imgResultante.SetPixel(i, j, resultanteColor);
+                    }
+                }
+                pictureBoxImgEditada.Image = imgResultante;
+                this.Invalidate(); //Forza el evento paint, redibuja la ventna
+            }
+        }
+
+        private void verdeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OcultarNumericUpDown();
+            if (imgOriginal == null)
+            {
+                MessageBox.Show("Porfavor, importe una imagen");
+            }
+            else
+            {
+                imgResultante = new Bitmap(imgOriginal.Width, imgOriginal.Height);
+
+                for (int i = 0; i < imgOriginal.Width; i++)
+                {
+                    for (int j = 0; j < imgOriginal.Height; j++)
+                    {
+                        resultanteColor = Color.FromArgb(0, imgOriginal.GetPixel(i, j).G, 0);
+                        imgResultante.SetPixel(i, j, resultanteColor);
+                    }
+                }
+                pictureBoxImgEditada.Image = imgResultante;
+                this.Invalidate(); //Forza el evento paint, redibuja la ventna
+            }
+        }
+
+        private void azulToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OcultarNumericUpDown();
+            if (imgOriginal == null)
+            {
+                MessageBox.Show("Porfavor, importe una imagen");
+            }
+            else
+            {
+                imgResultante = new Bitmap(imgOriginal.Width, imgOriginal.Height);
+
+                for (int i = 0; i < imgOriginal.Width; i++)
+                {
+                    for (int j = 0; j < imgOriginal.Height; j++)
+                    {
+                        resultanteColor = Color.FromArgb(0, 0, imgOriginal.GetPixel(i, j).B);
+                        imgResultante.SetPixel(i, j, resultanteColor);
+                    }
+                }
+                pictureBoxImgEditada.Image = imgResultante;
+                this.Invalidate(); //Forza el evento paint, redibuja la ventna
+            }
+        }
+
+        private void amarilloToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OcultarNumericUpDown();
+            if (imgOriginal == null)
+            {
+                MessageBox.Show("Porfavor, importe una imagen");
+            }
+            else
+            {
+                imgResultante = new Bitmap(imgOriginal.Width, imgOriginal.Height);
+
+                for (int i = 0; i < imgOriginal.Width; i++)
+                {
+                    for (int j = 0; j < imgOriginal.Height; j++)
+                    {
+                        resultanteColor = Color.FromArgb(imgEscalaGrises.GetPixel(i, j).R, imgEscalaGrises.GetPixel(i, j).G, 0);
+                        imgResultante.SetPixel(i, j, resultanteColor);
+                    }
+                }
+                pictureBoxImgEditada.Image = imgResultante;
+                this.Invalidate(); //Forza el evento paint, redibuja la ventna
+            }
+        }
+
+        private void moradoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OcultarNumericUpDown();
+            if (imgOriginal == null)
+            {
+                MessageBox.Show("Porfavor, importe una imagen");
+            }
+            else
+            {
+                imgResultante = new Bitmap(imgOriginal.Width, imgOriginal.Height);
+
+                for (int i = 0; i < imgOriginal.Width; i++)
+                {
+                    for (int j = 0; j < imgOriginal.Height; j++)
+                    {
+                        resultanteColor = Color.FromArgb(imgEscalaGrises.GetPixel(i, j).R, 0, imgEscalaGrises.GetPixel(i, j).B);
+                        imgResultante.SetPixel(i, j, resultanteColor);
+                    }
+                }
+                pictureBoxImgEditada.Image = imgResultante;
+                this.Invalidate(); //Forza el evento paint, redibuja la ventna
+            }
+        }
+
+        private void aberraciónCromáticaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OcultarNumericUpDown();
+            if (imgOriginal == null)
+            {
+                MessageBox.Show("Porfavor, importe una imagen");
+            }
+            else
+            {
+                int abCromatica = 5; //Nivel de la aberracion
+                int red = 0, green = 0, blue = 0;
+                imgResultante = new Bitmap(imgOriginal.Width, imgOriginal.Height);
+
+                for (int i = 0; i < imgOriginal.Width; i++)
+                {
+                    for (int j = 0; j < imgOriginal.Height; j++)
+                    {
+                        //Obtencion del color verde
+                        green = imgOriginal.GetPixel(i, j).G;
+                        
+                        //Obtencion del color rojo
+                        if((i + abCromatica) < imgOriginal.Width)
+                        {
+                            red = imgOriginal.GetPixel(i + abCromatica, j).R;
+                        }
+                        else
+                        {
+                            red = 0;
+                        }
+
+                        //Obtencion del color azul
+                        if ((i - abCromatica) >= 0)
+                        {
+                            blue = imgOriginal.GetPixel(i - abCromatica, j).B;
+
+                        }
+                        else
+                        {
+                            blue = 0;
+                        }
+                        imgResultante.SetPixel(i, j, Color.FromArgb(red, green, blue));
+                    }
+                }
+                pictureBoxImgEditada.Image = imgResultante;
+                this.Invalidate(); //Forza el evento paint, redibuja la ventna
+            }
+        }
+
+        private void gradientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OcultarNumericUpDown();
+            if (imgOriginal == null)
+            {
+                MessageBox.Show("Porfavor, importe una imagen");
+            }
+            else
+            {
+                int red = 0, green = 0, blue = 0;
+                double red1 = 120;
+                double green1 = 230;
+                double blue1= 120;
+                double red2 = 230;
+                double green2 = 100;
+                double blue2 = 230;
+
+                double degradedRed = (red2 - red1) / imgOriginal.Width;
+                double degradedGreen = (green2 - green1) / imgOriginal.Width;
+                double degradedBlue = (blue2 - blue1) / imgOriginal.Width;
+
+                imgResultante = new Bitmap(imgOriginal.Width, imgOriginal.Height);
+
+                for (int i = 0; i < imgOriginal.Width; i++)
+                {
+                    for (int j = 0; j < imgOriginal.Height; j++)
+                    {
+                        originalColor = imgEscalaGrises.GetPixel(i, j);
+                        red = Convert.ToInt32((red1/255.0f)* originalColor.R);
+                        green = Convert.ToInt32((green1 / 255.0f) * originalColor.G);
+                        blue = Convert.ToInt32((blue1 / 255.0f) * originalColor.B);
+
+                        if (red > 255)
+                        {
+                            red = 255;
+                        }
+                        else if(red < 0)
+                        {
+                            red = 0;
+                        }
+                        if (green > 255)
+                        {
+                            green = 255;
+                        }
+                        else if (green < 0)
+                        {
+                            green = 0;
+                        }
+                        if (blue > 255)
+                        {
+                            blue = 255;
+                        }
+                        else if (blue < 0)
+                        {
+                            blue = 0;
+                        }
+                        imgResultante.SetPixel(i, j, Color.FromArgb(red, green, blue));
+                    }
+                    red1 = red1 + degradedRed;
+                    green1 = green1 + degradedGreen;
+                    blue1 = blue1 + degradedBlue;
+                }
+                pictureBoxImgEditada.Image = imgResultante;
+                this.Invalidate(); //Forza el evento paint, redibuja la ventna
+            }
+        }
+
+        private void brilloContraste_Click(object sender, EventArgs e)
+        {
+            OcultarNumericUpDown();
+            if (imgResultante == null)
+            {
+                MessageBox.Show("Porfavor, aplique un filtro a la imagen");
+            }
+            else
+            {
+                brillo = hScrollBar1.Value;
+                imgBrillo = new Bitmap(imgOriginal.Width, imgOriginal.Height);
+
+                if ((brillo == 0) && (contraste == 0))
+                {
+                    pictureBoxImgEditada.Image = imgResultante;
+                    imgBrillo = null;
+                }
+                else
+                {
+                    int red = 0, green = 0, blue = 0;
+
+                    for (int i = 0; i < imgOriginal.Width; i++)
+                    {
+                        for (int j = 0; j < imgOriginal.Height; j++)
+                        {
+                            //Aplicando Brillo
+                            if (imgContraste == null)
+                            {
+                                red = imgResultante.GetPixel(i, j).R + brillo;
+                                green = imgResultante.GetPixel(i, j).G + brillo;
+                                blue = imgResultante.GetPixel(i, j).B + brillo;
+                            }
+                            else if (imgContraste != null)
+                            {
+                                red = imgContraste.GetPixel(i, j).R + brillo; ////
+                                green = imgContraste.GetPixel(i, j).G + brillo;
+                                blue = imgContraste.GetPixel(i, j).B + brillo;
+                            }
+
+                            if (red > 255)
+                            {
+                                red = 255;
+                            }
+                            else if (red < 0)
+                            {
+                                red = 0;
+                            }
+                            if (green > 255)
+                            {
+                                green = 255;
+                            }
+                            else if (green < 0)
+                            {
+                                green = 0;
+                            }
+                            if (blue > 255)
+                            {
+                                blue = 255;
+                            }
+                            else if (blue < 0)
+                            {
+                                blue = 0;
+                            }
+                            imgBrillo.SetPixel(i, j, Color.FromArgb(red, green, blue));
+                        }
+                    }
+                    pictureBoxImgEditada.Image = imgBrillo;
+                }
+                this.Invalidate();
+            }
+        }
+
+        private void btnContraste_Click(object sender, EventArgs e)
+        {
+            OcultarNumericUpDown();
+            if (imgResultante == null)
+            {
+                MessageBox.Show("Porfavor, aplique un filtro a la imagen");
+            }
+            else
+            {
+                contraste = hScrollBar2.Value;
+                imgContraste = new Bitmap(imgOriginal.Width, imgOriginal.Height);
+
+                if ((brillo == 0) && (contraste == 0))
+                {
+                    pictureBoxImgEditada.Image = imgResultante;
+                    imgContraste = null;
+                }
+                else
+                {
+                    double red = 0;
+                    double green = 0;
+                    double blue = 0;
+                    double c = (100.0f + contraste) / 100.0f;
+                    c *= c;
+
+                    for (int i = 0; i < imgOriginal.Width; i++)
+                    {
+                        for (int j = 0; j < imgOriginal.Height; j++)
+                        {
+                            if (imgBrillo == null)
+                            {
+                                red = ((((imgResultante.GetPixel(i, j).R / 255.0f) - 0.5f) * c) + 0.5f) * 255;
+                                green = ((((imgResultante.GetPixel(i, j).G / 255.0f) - 0.5f) * c) + 0.5f) * 255;
+                                blue = ((((imgResultante.GetPixel(i, j).B / 255.0f) - 0.5f) * c) + 0.5f) * 255;
+                            }
+                            else if (imgBrillo != null)
+                            {
+                                red = ((((imgBrillo.GetPixel(i, j).R / 255.0f) - 0.5f) * c) + 0.5f) * 255;
+                                green = ((((imgBrillo.GetPixel(i, j).G / 255.0f) - 0.5f) * c) + 0.5f) * 255;
+                                blue = ((((imgBrillo.GetPixel(i, j).B / 255.0f) - 0.5f) * c) + 0.5f) * 255;
+                            }
+
+                            if (red > 255)
+                            {
+                                red = 255;
+                            }
+                            else if (red < 0)
+                            {
+                                red = 0;
+                            }
+                            if (green > 255)
+                            {
+                                green = 255;
+                            }
+                            else if (green < 0)
+                            {
+                                green = 0;
+                            }
+                            if (blue > 255)
+                            {
+                                blue = 255;
+                            }
+                            else if (blue < 0)
+                            {
+                                blue = 0;
+                            }
+                            imgContraste.SetPixel(i, j, Color.FromArgb(Convert.ToInt32(red), Convert.ToInt32(green), Convert.ToInt32(blue)));
+                        }
+                    }
+                    pictureBoxImgEditada.Image = imgContraste;
+                }
+                this.Invalidate();
+            }
+        }
+
+        private void hScrollBar1_Scroll(object sender, ScrollEventArgs e)
+        {
+            lblBrillo.Text = Convert.ToString(hScrollBar1.Value);
+        }
+
+        private void hScrollBar2_Scroll(object sender, ScrollEventArgs e)
+        {
+            lblContraste.Text = Convert.ToString(hScrollBar2.Value);
+        }
+
+        private void originalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OcultarNumericUpDown();
+            if (imgOriginal == null)
+            {
+                MessageBox.Show("Porfavor, importe una imagen");
+            }
+            else
+            {
+                imgResultante = new Bitmap(imgOriginal.Width, imgOriginal.Height);
+                imgResultante = imgOriginal;
+                pictureBoxImgEditada.Image = imgResultante;
+                this.Invalidate();
             }
         }
     }
