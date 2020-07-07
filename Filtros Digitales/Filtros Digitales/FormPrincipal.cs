@@ -16,13 +16,13 @@ namespace Filtros_Digitales
         private Bitmap imgOriginal; //imagen original
         private Bitmap imgEscalaGrises; //imagen escalaGrises
         private Bitmap imgResultante; //imagen editada
-        private Bitmap imgBrillo;
-        private Bitmap imgContraste;
+        private Bitmap imgBrillo; //imagen con brillo
+        private Bitmap imgContraste; //imagen con contraste
         int brillo = 0, contraste = 0;
 
-        Color originalColor = new Color(); //objeto que guardara el color del pixel de la imagen original
-        Color resultanteColor = new Color(); //objeto que guardara el color final del pixel.
-        Color grisColor = new Color();
+        Color originalColor = new Color(); //color del pixel de la imagen original
+        Color resultanteColor = new Color(); //color final del pixel.
+        Color grisColor = new Color(); //color del pixel en escala de grises
 
         int[,] matrizTemp = new int[3, 3]; //Matriz temporal para la digitalizacion
         int[,] matrizFactores = new int[3, 3]; //Matriz de factores entre el filtro y la temporal
@@ -38,9 +38,12 @@ namespace Filtros_Digitales
         public FormPrincipal()
         {
             InitializeComponent();
+            //Aplicacion de fondos al form
             Bitmap fondo = new Bitmap(Application.StartupPath + @"\fondoInicio\FondoSecundario.jpg");
             this.BackgroundImage = fondo;
             this.BackgroundImageLayout = ImageLayout.Stretch;
+
+            //Ocultar botones, label y scrollbar
             btnBrillo.Visible = false;
             btnContraste.Visible = false;
             lblBrillo.Visible = false;
@@ -166,7 +169,7 @@ namespace Filtros_Digitales
             Application.Exit();
         }
 
-        //Algoritmo para enteros, double de 3x3 y 5x5
+        //Algoritmo de convulacion para enteros de 3x3, double de 3x3 y enteros de 5x5
 
         private void DigitalizacionInt3x3(int[,] matrizFiltro)
         {
@@ -576,6 +579,7 @@ namespace Filtros_Digitales
                 numericUpDownI.Visible = true;
             }
         }
+
         //Boton que habilita la opcion de aplicar filtro personalizado
         private void buttonAceptar_Click(object sender, EventArgs e)
         {
@@ -863,6 +867,8 @@ namespace Filtros_Digitales
             }
         }
 
+        //Filtros a color
+
         private void negativoColorToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             OcultarNumericUpDown();
@@ -889,7 +895,7 @@ namespace Filtros_Digitales
             }
         }
 
-        private void rojoToolStripMenuItem1_Click(object sender, EventArgs e) //Evento del Color Rojo
+        private void rojoToolStripMenuItem1_Click(object sender, EventArgs e) 
         {
             OcultarNumericUpDown();
             if (imgOriginal == null)
@@ -1123,6 +1129,8 @@ namespace Filtros_Digitales
                 this.Invalidate(); //Forza el evento paint, redibuja la ventna
             }
         }
+
+        //Brillo y Contraste
 
         private void brilloContraste_Click(object sender, EventArgs e)
         {
