@@ -54,7 +54,17 @@ namespace Filtros_Digitales
 
         private void FormPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            MessageBoxButtons botones = MessageBoxButtons.YesNo;
+            System.Windows.Forms.DialogResult respuesta;
+            respuesta = MessageBox.Show(this,"¿Desea salir sin guardar los cambios?", "Salir", botones);
+            if(respuesta == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+            else
+            {
+                e.Cancel = true;
+            }
         }
 
         private void OcultarNumericUpDown()
